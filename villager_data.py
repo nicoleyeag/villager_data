@@ -1,5 +1,10 @@
 """Functions to parse a file containing villager data."""
 
+# orders in the file
+# name -> species -> personality -> hobby -> motto
+
+import doctest
+filename = open("villagers.csv")
 
 def all_species(filename):
     """Return a set of unique species in the given file.
@@ -10,12 +15,35 @@ def all_species(filename):
     Return:
         - set[str]: a set of strings
     """
+    # species = [1]
+    species = set([])
 
-    species = set()
+    filename = open("villagers.csv")
+    for line in filename:
+        line = line.rstrip() #remote white space from the right
+        words = line.split('|')
+        # print(words)
+        species.add(words[1])
+    
+        # species = set([])
+        # for word in words:
+        #     # if word in words: 
+        #     #     species.add(words[1])
+        #     species.add(type_species)
 
+        # species1 = words[1]
+        # print(type(species1))
+
+
+        # print(species1)
+
+        # species = set(species1)
+        # species.add(species1)
     # TODO: replace this with your code
 
     return species
+
+print(all_species(filename))
 
 
 def get_villagers_by_species(filename, search_string="All"):
