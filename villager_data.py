@@ -48,12 +48,13 @@ def get_villagers_by_species(filename, search_string="All"):
 
     filename = open("villagers.csv")
     for line in filename:
-        line = line.rstrip() #remote white space from the right
-        words = line.split('|')
+        # line = line.rstrip() # remote white space from the right
+        villager_name, species = line.rstrip().split('|')[:2]
 
-        villagers.append(words[0])
+        # name = [0] species = [1] personality = [2]
+        if search_string in ("All", species):
+            villagers.append(villager_name)
         
-
     #     #if species matches input of species we will return the villager name associated
     # for words[1] in line:
     #     if words[1] == search_string:
@@ -65,10 +66,10 @@ def get_villagers_by_species(filename, search_string="All"):
     #     # else
     #     # add everyone's name to the list 
     #     villagers.append(words[0])
-    # return sorted(villagers)
+    return sorted(villagers)
 
-# print(get_villagers_by_species(filename, search_string="All"))
-# print(get_villagers_by_species(filename, "Wolf"))
+print(get_villagers_by_species(filename, search_string="All"))
+# print(get_villagers_by_species(filename, search_string="Wolf"))
 
 def all_names_by_hobby(filename):
     """Return a list of lists containing villagers' names, grouped by hobby.
@@ -79,11 +80,42 @@ def all_names_by_hobby(filename):
     Return:
         - list[list[str]]: a list of lists containing names
     """
+    main_list = []
+    #make a fitness list of people who have that hobby
+    fitness = []
+    nature = []
+    education = []
+    music = []
+    fashion = []
+    play = []
+
+    # list = [hobby[name]] fit{audie, cyrano}
+    # list(sorted(hobbies_list(---names inside list become sorted---)))
+    
+    # 6 hobbies = fitness, Nature, Education, Music, Fashion, Play
 
     # TODO: replace this with your code
+    filename = open("villagers.csv")
+    for line in filename:
+        line = line.rstrip() 
+        words = line.split('|')
+        #remote white space from the right
+        # villager_name, hobbies = line.rstrip().split('|')[:4]
+        villager_name = words[0]
+        hobbies = words[3]
 
+        if "fitness" in hobbies:
+            fitness.append(villager_name)
+        # elif villager has nature for hobby
+            # nature.append(villager) 
+        print(fitness)
+
+   # our return value should be a list with 6 lists inside 
+   # the names in each list should appear in alphabetical order
+
+   # main_list = [[fitness], [nature], [education], [music], [fashion], [play]]
     return []
-
+print(all_names_by_hobby(filename))
 
 def all_data(filename):
     """Return all the data in a file.
