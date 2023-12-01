@@ -51,14 +51,24 @@ def get_villagers_by_species(filename, search_string="All"):
         line = line.rstrip() #remote white space from the right
         words = line.split('|')
 
-        #if species matches input of species we will return the villager name associated
-        if words[1] == search_string:
-            villagers.append(words[0])
-        else:
-            villagers.append(words[0])
-    return sorted(villagers)
+        villagers.append(words[0])
+        
 
-get_villagers_by_species(filename, search_string="All")
+    #     #if species matches input of species we will return the villager name associated
+    # for words[1] in line:
+    #     if words[1] == search_string:
+    #         print(words[0])
+    #     # if the species matches the search_species
+    #         # append that species's owners name to the list 
+    #         villagers.append(words[0])
+    # else:
+    #     # else
+    #     # add everyone's name to the list 
+    #     villagers.append(words[0])
+    # return sorted(villagers)
+
+# print(get_villagers_by_species(filename, search_string="All"))
+# print(get_villagers_by_species(filename, "Wolf"))
 
 def all_names_by_hobby(filename):
     """Return a list of lists containing villagers' names, grouped by hobby.
