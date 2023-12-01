@@ -22,28 +22,13 @@ def all_species(filename):
     for line in filename:
         line = line.rstrip() #remote white space from the right
         words = line.split('|')
-        # print(words)
+
         species.add(words[1])
-    
-        # species = set([])
-        # for word in words:
-        #     # if word in words: 
-        #     #     species.add(words[1])
-        #     species.add(type_species)
-
-        # species1 = words[1]
-        # print(type(species1))
-
-
-        # print(species1)
-
-        # species = set(species1)
-        # species.add(species1)
     # TODO: replace this with your code
 
     return species
 
-print(all_species(filename))
+# print(all_species(filename))
 
 
 def get_villagers_by_species(filename, search_string="All"):
@@ -56,13 +41,24 @@ def get_villagers_by_species(filename, search_string="All"):
     Return:
         - list[str]: a list of names
     """
+ 
+
 
     villagers = []
 
-    # TODO: replace this with your code
+    filename = open("villagers.csv")
+    for line in filename:
+        line = line.rstrip() #remote white space from the right
+        words = line.split('|')
 
+        #if species matches input of species we will return the villager name associated
+        if words[1] == search_string:
+            villagers.append(words[0])
+        else:
+            villagers.append(words[0])
     return sorted(villagers)
 
+get_villagers_by_species(filename, search_string="All")
 
 def all_names_by_hobby(filename):
     """Return a list of lists containing villagers' names, grouped by hobby.
